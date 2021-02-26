@@ -1,0 +1,28 @@
+From b6e51f12214721135497d0dc9b7e455dc4bb681a Mon Sep 17 00:00:00 2001
+From: Paul Merrill <pdm@pdm.me>
+Date: Thu, 25 Feb 2021 18:09:17 -0800
+Subject: [PATCH] Skip libwrap for Alpine Linux
+
+Alpine's stunnel does not have libwrap.
+---
+ src/mount_efs/__init__.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/mount_efs/__init__.py b/src/mount_efs/__init__.py
+index 5cd07f7..e8cae83 100755
+--- a/src/mount_efs/__init__.py
++++ b/src/mount_efs/__init__.py
+@@ -222,9 +222,10 @@ CENTOS8_RELEASE_NAME = 'CentOS Linux release 8'
+ FEDORA_RELEASE_NAME = 'Fedora release'
+ OPEN_SUSE_LEAP_RELEASE_NAME = 'openSUSE Leap'
+ SUSE_RELEASE_NAME = 'SUSE Linux Enterprise Server'
++ALPINE_RELEASE_NAME = 'Alpine Linux'
+ 
+ SKIP_NO_LIBWRAP_RELEASES = [RHEL8_RELEASE_NAME, CENTOS8_RELEASE_NAME, FEDORA_RELEASE_NAME, OPEN_SUSE_LEAP_RELEASE_NAME,
+-                            SUSE_RELEASE_NAME]
++                            SUSE_RELEASE_NAME, ALPINE_RELEASE_NAME]
+ 
+ 
+ def errcheck(ret, func, args):
+-- 
+2.24.3

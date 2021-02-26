@@ -1,0 +1,9 @@
+#!/sbin/openrc-run
+
+name="$SVCNAME"
+command="/usr/bin/$SVCNAME"
+
+depend() {
+	need net
+	use dns
+}
